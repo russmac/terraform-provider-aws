@@ -199,7 +199,7 @@ The following arguments are supported:
 * `ec2_tag_filter` - (Optional) Tag filters associated with the deployment group. See the AWS docs for details.
 * `ec2_tag_set` - (Optional) Configuration block(s) of Tag filters associated with the deployment group, which are also referred to as tag groups (documented below). See the AWS docs for details.
 * `ecs_service` - (Optional) Configuration block(s) of the ECS services for a deployment group (documented below).
-* `load_balancer_info` - (Optional) Single configuration block of the load balancer to use in a blue/green deployment (documented below).
+* `load_balancer_info` - (Required) Single configuration block of the load balancer to use in an ECS deployment (documented below).
 * `on_premises_instance_tag_filter` - (Optional) On premise tag filters associated with the group. See the AWS docs for details.
 * `trigger_configuration` - (Optional) Configuration block(s) of the triggers for the deployment group (documented below).
 
@@ -256,9 +256,9 @@ You can configure how instances in the original environment are terminated when 
 
 ### deployment_style Argument Reference
 
-You can configure the type of deployment, either in-place or blue/green, you want to run and whether to route deployment traffic behind a load balancer. `deployment_style` supports the following:
+You can configure the type of deployment, either in-place or blue/green, you want to run. `deployment_style` supports the following:
 
-* `deployment_option` - (Optional) Indicates whether to route deployment traffic behind a load balancer. Valid Values are `WITH_TRAFFIC_CONTROL` or `WITHOUT_TRAFFIC_CONTROL`.
+* `deployment_option` - (Optional) Indicates whether to use a blue/green deployment. Valid Values are `WITH_TRAFFIC_CONTROL` or `WITHOUT_TRAFFIC_CONTROL`.
 * `deployment_type` - (Optional) Indicates whether to run an in-place deployment or a blue/green deployment. Valid Values are `IN_PLACE` or `BLUE_GREEN`.
 
 _Only one `deployment_style` is allowed_.
